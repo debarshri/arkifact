@@ -1,9 +1,6 @@
 package io.debarshri.github.arkifact;
 
-import io.debarshri.github.arkifact.route.CreateApp;
-import io.debarshri.github.arkifact.route.CreateArtifact;
-import io.debarshri.github.arkifact.route.GetApp;
-import io.debarshri.github.arkifact.route.Projects;
+import io.debarshri.github.arkifact.route.*;
 import spark.Spark;
 
 public class ServerMain {
@@ -12,7 +9,13 @@ public class ServerMain {
         Resource.REPO = "repo/";
         Spark.get("/", new Projects());
         Spark.get("/get/:appname", new GetApp());
+
+        Spark.get("/get/:appname/listnames", new GetApp());
+        Spark.get("/get/:appname/tag/:tagname", new GetApp());
+        Spark.get("/get/:appname/tag/:tagname/latest", new GetApp());
+
         Spark.post("/create/:appname", new CreateApp());
-        Spark.post("/for/:appname/add/type/:type", new CreateArtifact());
+        Spark.post("/for/:appname/addArtifact/type/:type", new CreateArtifact());
+        Spark.post("/for/:appname/addArtifact/type/:type/tag/:tag", new CreateArtifactTags());
     }
 }
