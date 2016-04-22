@@ -10,12 +10,17 @@ public class ServerMain {
         Spark.get("/", new Projects());
         Spark.get("/get/:appname", new GetApp());
 
+        //todo
         Spark.get("/get/:appname/listnames", new GetApp());
-        Spark.get("/get/:appname/tag/:tagname", new GetApp());
-        Spark.get("/get/:appname/tag/:tagname/latest", new GetApp());
+        //todo
+        Spark.get("/get/:appname/tag/:tagname", new GetAppForTag());
+        //todo
+        Spark.get("/tags/:appname", new GetAppForTag());
+        //todo
+        Spark.get("/get/:appname/tag/:tagname/latest", new GetAppForTagLatest());
 
         Spark.post("/create/:appname", new CreateApp());
-        Spark.post("/for/:appname/addArtifact/type/:type", new CreateArtifact());
-        Spark.post("/for/:appname/addArtifact/type/:type/tag/:tag", new CreateArtifactTags());
+        Spark.post("/app/:appname/add-artifact/type/:type", new CreateArtifact());
+        Spark.post("/app/:appname/add-artifact/type/:type/tag/:tag", new CreateArtifactTags());
     }
 }

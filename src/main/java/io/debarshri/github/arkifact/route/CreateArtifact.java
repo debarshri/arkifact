@@ -8,7 +8,7 @@ import spark.Route;
 
 import java.io.File;
 
-/*curl -X POST --data-binary "@merchant-express-streaming-service-0.1.jar" "http://localhost:8081/for/test/add/type/jar"*/
+/*curl -X POST --data-binary "@merchant-express-streaming-service-0.1.jar" "http://localhost:8081/app/test/add-artifact/type/jar"*/
 public class CreateArtifact implements Route {
     public Object handle(Request request, Response response) throws Exception {
         String appname = request.params("appname");

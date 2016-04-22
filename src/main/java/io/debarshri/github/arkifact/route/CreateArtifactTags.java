@@ -18,5 +18,6 @@ public class CreateArtifactTags implements Route {
         String pathname =  Resource.REPO + "/" + appname + "/" +tag+"_"+ l +"."+type;
         File file = new File(pathname);
         FileUtils.writeByteArrayToFile(file, request.bodyAsBytes());
-        return "ok with "+l;    }
+        return "ok with "+l;
+    }
 }
