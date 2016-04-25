@@ -13,6 +13,7 @@ public class ServerMain {
 
         Spark.get("/", new Projects());
         Spark.get("/get/:appname", new GetApp());
+        Spark.get("/get/:appname/version/:version", new GetAppWithVersion());
 
         //todo
         Spark.get("/get/:appname/listnames", new GetApp());
