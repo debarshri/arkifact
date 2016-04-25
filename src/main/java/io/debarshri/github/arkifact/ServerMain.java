@@ -1,12 +1,16 @@
 package io.debarshri.github.arkifact;
 
+import com.lexicalscope.jewel.cli.CliFactory;
 import io.debarshri.github.arkifact.route.*;
 import spark.Spark;
 
 public class ServerMain {
     public static void main(String[] args) {
-        Spark.port(8081);
-        Resource.REPO = "repo/";
+
+        final Opts opts = CliFactory.parseArguments(Opts.class, args);
+        Spark.port(opts.getPort());
+        Resource.REPO = opts.getRepo();
+
         Spark.get("/", new Projects());
         Spark.get("/get/:appname", new GetApp());
 
